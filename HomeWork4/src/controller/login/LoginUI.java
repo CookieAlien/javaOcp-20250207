@@ -1,4 +1,4 @@
-package controller;
+package controller.login;
 
 import java.awt.EventQueue;
 
@@ -6,10 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.shop.MainMenuUI;
+import model.ShopMember;
+import service.impl.ShopMemberServiceImpl;
 import util.ClockPanel;
+import util.FileTool;
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
@@ -27,6 +32,7 @@ public class LoginUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField usernameField;
 	private JPasswordField passwordField;
+	private static ShopMemberServiceImpl shopMemberServiceImpl = new ShopMemberServiceImpl();
 
 	/**
 	 * Launch the application.
@@ -56,30 +62,30 @@ public class LoginUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(32, 175, 234));
-		panel.setBounds(10, 10, 466, 76);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		JPanel titlePanel = new JPanel();
+		titlePanel.setBackground(new Color(32, 175, 234));
+		titlePanel.setBounds(10, 10, 466, 76);
+		contentPane.add(titlePanel);
+		titlePanel.setLayout(null);
 		
 		JLabel titleLabel = new JLabel("普龍共");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setForeground(new Color(255, 255, 255));
 		titleLabel.setFont(new Font("微軟正黑體", Font.BOLD, 24));
 		titleLabel.setBounds(10, 10, 188, 33);
-		panel.add(titleLabel);
+		titlePanel.add(titleLabel);
 		
 		JLabel subtitleLabel = new JLabel("電視遊樂器專賣店");
 		subtitleLabel.setForeground(new Color(255, 255, 255));
 		subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		subtitleLabel.setFont(new Font("微軟正黑體", Font.PLAIN, 14));
 		subtitleLabel.setBounds(10, 45, 188, 21);
-		panel.add(subtitleLabel);
+		titlePanel.add(subtitleLabel);
 		
 		ClockPanel clockPanel = new ClockPanel();
 		clockPanel.setBackground(new Color(32, 175, 234));
 		clockPanel.setBounds(248, 12, 208, 54);
-		panel.add(clockPanel);
+		titlePanel.add(clockPanel);
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBackground(new Color(255, 255, 255));
@@ -115,6 +121,20 @@ public class LoginUI extends JFrame {
 		mainPanel.add(passwordField);
 		
 		JButton loginButton = new JButton("登入");
+		loginButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String username = usernameField.getText();
+				String password = passwordField.getText();
+				ShopMember member = shopMemberServiceImpl.login(username, password);
+				if (member!=null) {
+					FileTool.save(member, "ShopMember.txt");
+					new MainMenuUI().setVisible(true);
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog(contentPane, "帳號或密碼錯誤!", "警告", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
 		loginButton.setForeground(new Color(255, 255, 255));
 		loginButton.setBackground(new Color(234, 0, 0));
 		loginButton.setFont(new Font("微軟正黑體", Font.PLAIN, 18));

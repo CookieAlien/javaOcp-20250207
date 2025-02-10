@@ -1,10 +1,11 @@
-package controller;
+package controller.login;
 
 import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
@@ -12,18 +13,25 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import model.ShopMember;
+import service.impl.ShopMemberServiceImpl;
 import util.ClockPanel;
+import util.Helper;
 
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RegisterUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField accountField;
 	private JPasswordField passwordField;
 	private JPasswordField confirmField;
 	private JTextField nameField;
@@ -32,6 +40,8 @@ public class RegisterUI extends JFrame {
 	private JTextField phoneField;
 	private Border defaultBorder = new JTextField().getBorder();
 	private Border errorBorder = new LineBorder(Color.red,2);
+	private JButton signupButton;
+	private ShopMemberServiceImpl shopMemberServiceImpl = new ShopMemberServiceImpl();
 
 	/**
 	 * Launch the application.
@@ -61,30 +71,30 @@ public class RegisterUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(32, 175, 234));
-		panel.setBounds(10, 10, 616, 78);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		JPanel titlePanel = new JPanel();
+		titlePanel.setBackground(new Color(32, 175, 234));
+		titlePanel.setBounds(10, 10, 616, 78);
+		contentPane.add(titlePanel);
+		titlePanel.setLayout(null);
 		
 		JLabel titleLabel = new JLabel("普龍共");
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setForeground(new Color(255, 255, 255));
 		titleLabel.setFont(new Font("微軟正黑體", Font.BOLD, 24));
 		titleLabel.setBounds(99, 5, 72, 33);
-		panel.add(titleLabel);
+		titlePanel.add(titleLabel);
 		
 		JLabel subtitleLabel = new JLabel("電視遊樂器專賣店");
 		subtitleLabel.setForeground(new Color(255, 255, 255));
 		subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		subtitleLabel.setFont(new Font("微軟正黑體", Font.PLAIN, 14));
 		subtitleLabel.setBounds(76, 48, 115, 20);
-		panel.add(subtitleLabel);
+		titlePanel.add(subtitleLabel);
 		
 		ClockPanel clockPanel = new ClockPanel();
 		clockPanel.setBackground(new Color(32, 175, 234));
 		clockPanel.setBounds(395, 22, 211, 30);
-		panel.add(clockPanel);
+		titlePanel.add(clockPanel);
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBackground(new Color(255, 255, 255));
@@ -104,11 +114,31 @@ public class RegisterUI extends JFrame {
 		usernameLabel.setBounds(10, 61, 92, 29);
 		mainPanel.add(usernameLabel);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
-		textField.setBounds(112, 63, 140, 29);
-		mainPanel.add(textField);
-		textField.setColumns(10);
+		accountField = new JTextField();
+		accountField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (Helper.validateUsername(accountField.getText())) {
+					accountField.setBorder(defaultBorder);
+				}else {
+					accountField.setBorder(errorBorder);
+				}
+				passwordField.requestFocusInWindow();
+			}
+		});
+		accountField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (Helper.validateUsername(accountField.getText())) {
+					accountField.setBorder(defaultBorder);
+				}else {
+					accountField.setBorder(errorBorder);
+				}
+			}
+		});
+		accountField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
+		accountField.setBounds(112, 63, 140, 29);
+		mainPanel.add(accountField);
+		accountField.setColumns(10);
 		
 		JLabel usernameHintLabel = new JLabel("帳號為6~16位英文數字，首位不能為數字");
 		usernameHintLabel.setForeground(new Color(0, 0, 0));
@@ -124,6 +154,26 @@ public class RegisterUI extends JFrame {
 		mainPanel.add(passwordLabel);
 		
 		passwordField = new JPasswordField();
+		passwordField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (Helper.validatePassword(passwordField.getText())) {
+					passwordField.setBorder(defaultBorder);
+				}else {
+					passwordField.setBorder(errorBorder);
+				}
+				confirmField.requestFocusInWindow();
+			}
+		});
+		passwordField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (Helper.validatePassword(passwordField.getText())) {
+					passwordField.setBorder(defaultBorder);
+				}else {
+					passwordField.setBorder(errorBorder);
+				}
+			}
+		});
 		passwordField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
 		passwordField.setBounds(112, 128, 140, 29);
 		mainPanel.add(passwordField);
@@ -142,6 +192,26 @@ public class RegisterUI extends JFrame {
 		mainPanel.add(confirmLabel);
 		
 		confirmField = new JPasswordField();
+		confirmField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (passwordField.getText().equals(confirmField.getText())) {
+					confirmField.setBorder(defaultBorder);
+				}else {
+					confirmField.setBorder(errorBorder);
+				}
+				nameField.requestFocusInWindow();
+			}
+		});
+		confirmField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (passwordField.getText().equals(confirmField.getText())) {
+					confirmField.setBorder(defaultBorder);
+				}else {
+					confirmField.setBorder(errorBorder);
+				}
+			}
+		});
 		confirmField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
 		confirmField.setBounds(112, 192, 140, 29);
 		confirmField.setBorder(new LineBorder(Color.gray));
@@ -154,6 +224,26 @@ public class RegisterUI extends JFrame {
 		mainPanel.add(nameLabel);
 		
 		nameField = new JTextField();
+		nameField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (Helper.validateName(nameField.getText())) {
+					nameField.setBorder(defaultBorder);
+				}else {
+					nameField.setBorder(errorBorder);
+				}
+				addressField.requestFocusInWindow();
+			}
+		});
+		nameField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (Helper.validateName(nameField.getText())) {
+					nameField.setBorder(defaultBorder);
+				}else {
+					nameField.setBorder(errorBorder);
+				}
+			}
+		});
 		nameField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
 		nameField.setColumns(10);
 		nameField.setBounds(390, 63, 140, 29);
@@ -173,6 +263,26 @@ public class RegisterUI extends JFrame {
 		mainPanel.add(addressLabel);
 		
 		addressField = new JTextField();
+		addressField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (addressLabel.getText().isBlank()) {
+					addressField.setBorder(errorBorder);
+				}else {
+					addressField.setBorder(defaultBorder);
+				}
+				emailField.requestFocusInWindow();
+			}
+		});
+		addressField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (addressLabel.getText().isBlank()) {
+					addressField.setBorder(errorBorder);
+				}else {
+					addressField.setBorder(defaultBorder);
+				}
+			}
+		});
 		addressField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
 		addressField.setColumns(10);
 		addressField.setBounds(368, 128, 216, 29);
@@ -191,12 +301,52 @@ public class RegisterUI extends JFrame {
 		mainPanel.add(phoneLabel);
 		
 		emailField = new JTextField();
+		emailField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (Helper.validateEmail(emailField.getText())) {
+					emailField.setBorder(defaultBorder);
+				}else {
+					emailField.setBorder(errorBorder);
+				}
+				phoneField.requestFocusInWindow();
+			}
+		});
+		emailField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (Helper.validateEmail(emailField.getText())) {
+					emailField.setBorder(defaultBorder);
+				}else {
+					emailField.setBorder(errorBorder);
+				}
+			}
+		});
 		emailField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
 		emailField.setColumns(10);
 		emailField.setBounds(368, 192, 216, 29);
 		mainPanel.add(emailField);
 		
 		phoneField = new JTextField();
+		phoneField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (Helper.validatePhoneNumber(phoneField.getText())) {
+					phoneField.setBorder(defaultBorder);
+				}else {
+					phoneField.setBorder(errorBorder);
+				}
+				signupButton.requestFocusInWindow();
+			}
+		});
+		phoneField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (Helper.validatePhoneNumber(phoneField.getText())) {
+					phoneField.setBorder(defaultBorder);
+				}else {
+					phoneField.setBorder(errorBorder);
+				}
+			}
+		});
 		phoneField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
 		phoneField.setColumns(10);
 		phoneField.setBounds(390, 245, 140, 29);
@@ -223,7 +373,30 @@ public class RegisterUI extends JFrame {
 		phoneHintLabel.setBounds(400, 273, 113, 29);
 		mainPanel.add(phoneHintLabel);
 		
-		JButton signupButton = new JButton("註冊");
+		signupButton = new JButton("註冊");
+		signupButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String username = accountField.getText();
+				String password = passwordField.getText();
+				String passwordCheck = confirmField.getText();
+				String name = nameField.getText();
+				String address = addressField.getText();
+				String email = emailField.getText();
+				String phone = phoneField.getText();
+				if (validateAll(username, password, passwordCheck, name, address, email, phone)) {
+					if (!shopMemberServiceImpl.isUsernameTaken(username)) {
+						shopMemberServiceImpl.addMember(new ShopMember(username, password, name, address, email, phone, "customer"));
+						JOptionPane.showMessageDialog(contentPane, "註冊成功!");
+						new LoginUI().setVisible(true);
+						dispose();
+					}else {
+						JOptionPane.showMessageDialog(contentPane, "帳號已被使用!", "警告", JOptionPane.WARNING_MESSAGE);
+					}
+				} else {
+					JOptionPane.showMessageDialog(contentPane, "請再次檢查輸入資料的格式!", "警告", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
 		signupButton.setBackground(new Color(0, 225, 0));
 		signupButton.setForeground(new Color(255, 255, 255));
 		signupButton.setFont(new Font("微軟正黑體", Font.PLAIN, 18));
@@ -232,5 +405,13 @@ public class RegisterUI extends JFrame {
 		
 		new Timer(1000, e -> clockPanel.updateTime()).start();
 	}
-
+	private boolean validateAll(String username, String password,String passwordCheck, String name, String address, String email, String phone) {
+		return Helper.validateUsername(username) 
+				&& Helper.validatePassword(password) 
+				&& password.equals(passwordCheck) 
+				&& Helper.validateName(name)
+				&& !address.isBlank()
+				&& Helper.validateEmail(email)
+				&& Helper.validatePhoneNumber(phone);
+	}
 }

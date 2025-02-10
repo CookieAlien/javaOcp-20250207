@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.ShopMemberDao;
-import model.DBConnection;
 import model.ShopMember;
+import util.DBConnection;
 
 public class ShopMemberDaoImpl implements ShopMemberDao{
 	private static Connection connection = DBConnection.getConnection();

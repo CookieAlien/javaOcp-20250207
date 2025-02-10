@@ -1,6 +1,8 @@
 package model;
 
-public class ShopMember {
+import java.io.Serializable;
+
+public class ShopMember implements Serializable{
 	private int id;
 	private String username;
 	private String password;
