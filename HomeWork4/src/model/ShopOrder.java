@@ -1,6 +1,8 @@
 package model;
 
-public class ShopOrder {
+import java.io.Serializable;
+
+public class ShopOrder implements Serializable{
 	private int id;
 	private String username;
 	private int ps5pro;
@@ -8,6 +10,7 @@ public class ShopOrder {
 	private int nswitch;
 	private int steamdeck;
 	private int xboxcontroller;
+	private int sum;
 	public ShopOrder() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -62,6 +65,12 @@ public class ShopOrder {
 	}
 	public void setXboxcontroller(int xboxcontroller) {
 		this.xboxcontroller = xboxcontroller;
+	}
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
 	}
 	
 }

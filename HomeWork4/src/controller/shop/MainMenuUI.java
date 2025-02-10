@@ -91,6 +91,12 @@ public class MainMenuUI extends JFrame {
 		welcomeLabel.setText("歡迎，"+shopMember.getName());
 		
 		JButton addOrderButton = new JButton("新增訂單");
+		addOrderButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new AddOrderUI().setVisible(true);
+				dispose();
+			}
+		});
 		addOrderButton.setBackground(new Color(255, 255, 255));
 		addOrderButton.setFont(new Font("微軟正黑體", Font.PLAIN, 20));
 		addOrderButton.setBounds(28, 201, 119, 39);
