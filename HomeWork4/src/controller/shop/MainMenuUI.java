@@ -135,6 +135,12 @@ public class MainMenuUI extends JFrame {
 		contentPane.add(exitButton);
 		
 		JButton updateInfoButton = new JButton("修改個人資訊");
+		updateInfoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ChangeInfoUI().setVisible(true);
+				dispose();
+			}
+		});
 		updateInfoButton.setFont(new Font("微軟正黑體", Font.PLAIN, 15));
 		updateInfoButton.setBackground(Color.WHITE);
 		updateInfoButton.setBounds(28, 283, 132, 39);

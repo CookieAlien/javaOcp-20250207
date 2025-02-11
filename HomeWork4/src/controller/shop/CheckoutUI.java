@@ -159,13 +159,14 @@ public class CheckoutUI extends JFrame {
 		confirmPanel.add(cardRadio);
 		
 		JRadioButton excelRadio = new JRadioButton("Excel Pay");
+		excelRadio.setEnabled(false);
 		excelRadio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cashField.setEnabled(false);
 				cashField.setText("");
 			}
 		});
-		excelRadio.setToolTipText("早安");
+		excelRadio.setToolTipText("維護中");
 		buttonGroup.add(excelRadio);
 		excelRadio.setFont(new Font("微軟正黑體", Font.PLAIN, 18));
 		excelRadio.setBackground(Color.WHITE);
