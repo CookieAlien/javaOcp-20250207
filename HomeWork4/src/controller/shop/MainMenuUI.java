@@ -46,6 +46,7 @@ public class MainMenuUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MainMenuUI() {
+		setTitle("普龍共電視遊樂器專賣店");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
 		contentPane = new JPanel();
@@ -132,6 +133,12 @@ public class MainMenuUI extends JFrame {
 		exitButton.setFont(new Font("微軟正黑體", Font.PLAIN, 20));
 		exitButton.setBounds(182, 283, 119, 39);
 		contentPane.add(exitButton);
+		
+		JButton updateInfoButton = new JButton("修改個人資訊");
+		updateInfoButton.setFont(new Font("微軟正黑體", Font.PLAIN, 15));
+		updateInfoButton.setBackground(Color.WHITE);
+		updateInfoButton.setBounds(28, 283, 132, 39);
+		contentPane.add(updateInfoButton);
 		
 		
 		new Timer(1000, e -> clockPanel.updateTime()).start();

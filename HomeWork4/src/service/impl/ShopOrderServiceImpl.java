@@ -30,10 +30,16 @@ public class ShopOrderServiceImpl implements ShopOrderService{
 	public ShopOrder getOrderById(int id) {
 		return shopOrderDaoImpl.selectById(id).get(0);
 	}
-
+	@Override
+	public void updateOrder(ShopOrder order) {
+		shopOrderDaoImpl.update(order);
+		
+	}
 	@Override
 	public void deleteOrder(int id) {
 		shopOrderDaoImpl.delete(id);
 	}
+
+	
 
 }

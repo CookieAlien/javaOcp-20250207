@@ -63,6 +63,7 @@ public class RegisterUI extends JFrame {
 	 * Create the frame.
 	 */
 	public RegisterUI() {
+		setTitle("普龍共電視遊樂器專賣店");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 500);
 		contentPane = new JPanel();

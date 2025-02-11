@@ -67,6 +67,7 @@ public class AddOrderUI extends JFrame {
 	 * Create the frame.
 	 */
 	public AddOrderUI() {
+		setTitle("普龍共電視遊樂器專賣店");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 50, 500, 600);
 		contentPane = new JPanel();
@@ -490,6 +491,11 @@ public class AddOrderUI extends JFrame {
 				+ steamdeck * steamdeckPrice
 				+ xbox * xboxcontrollerPrice;
 		sumLabel.setText("總計: "+sum+"元");
+		order.setPs5pro(ps5pro);
+		order.setPs5slim(ps5slim);
+		order.setNswitch(nswitch);
+		order.setSteamdeck(steamdeck);
+		order.setXboxcontroller(xbox);
 		order.setSum(sum);
 	}
 }

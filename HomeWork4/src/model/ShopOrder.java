@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class ShopOrder implements Serializable{
 	private int id;
@@ -11,6 +12,7 @@ public class ShopOrder implements Serializable{
 	private int steamdeck;
 	private int xboxcontroller;
 	private int sum;
+	private LocalDateTime lastModified;
 	public ShopOrder() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -71,6 +73,12 @@ public class ShopOrder implements Serializable{
 	}
 	public void setSum(int sum) {
 		this.sum = sum;
+	}
+	public LocalDateTime getLastModified() {
+		return lastModified;
+	}
+	public void setLastModified(LocalDateTime lastModified) {
+		this.lastModified = lastModified;
 	}
 	
 }

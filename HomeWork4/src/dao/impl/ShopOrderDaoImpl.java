@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +49,9 @@ public class ShopOrderDaoImpl implements ShopOrderDao{
 				order.setPs5slim(resultSet.getInt("ps5slim"));
 				order.setNswitch(resultSet.getInt("nswitch"));
 				order.setSteamdeck(resultSet.getInt("steamdeck"));
+				Timestamp timestamp = resultSet.getTimestamp("last_modified");
+				LocalDateTime dateTime = timestamp.toLocalDateTime();
+				order.setLastModified(dateTime);
 				orders.add(order);
 			}
 		} catch (SQLException e) {
@@ -73,6 +78,9 @@ public class ShopOrderDaoImpl implements ShopOrderDao{
 				order.setPs5slim(resultSet.getInt("ps5slim"));
 				order.setNswitch(resultSet.getInt("nswitch"));
 				order.setSteamdeck(resultSet.getInt("steamdeck"));
+				Timestamp timestamp = resultSet.getTimestamp("last_modified");
+				LocalDateTime dateTime = timestamp.toLocalDateTime();
+				order.setLastModified(dateTime);
 				orders.add(order);
 			}
 		} catch (SQLException e) {
@@ -99,6 +107,9 @@ public class ShopOrderDaoImpl implements ShopOrderDao{
 				order.setPs5slim(resultSet.getInt("ps5slim"));
 				order.setNswitch(resultSet.getInt("nswitch"));
 				order.setSteamdeck(resultSet.getInt("steamdeck"));
+				Timestamp timestamp = resultSet.getTimestamp("last_modified");
+				LocalDateTime dateTime = timestamp.toLocalDateTime();
+				order.setLastModified(dateTime);
 				orders.add(order);
 			}
 		} catch (SQLException e) {

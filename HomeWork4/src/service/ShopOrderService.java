@@ -12,7 +12,7 @@ public interface ShopOrderService {
 	List<ShopOrder> getOrdersByName(String username);
 	ShopOrder getOrderById(int id);
 	//update
-	
+	void updateOrder(ShopOrder order);
 	//delete
 	void deleteOrder(int id);
 }
