@@ -103,13 +103,19 @@ public class MainMenuUI extends JFrame {
 		addOrderButton.setBounds(28, 201, 119, 39);
 		contentPane.add(addOrderButton);
 		
-		JButton viewOrderButton = new JButton("查詢訂單");
+		JButton viewOrderButton = new JButton("我的訂單");
+		viewOrderButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ViewOrderUI().setVisible(true);
+				dispose();
+			}
+		});
 		viewOrderButton.setBackground(new Color(255, 255, 255));
 		viewOrderButton.setFont(new Font("微軟正黑體", Font.PLAIN, 20));
 		viewOrderButton.setBounds(182, 201, 119, 39);
 		contentPane.add(viewOrderButton);
 		
-		JButton manageButton = new JButton("訂單管理");
+		JButton manageButton = new JButton("管理後台");
 		manageButton.setEnabled(shopMember.getRole().equals("staff"));
 		manageButton.setBackground(new Color(255, 255, 255));
 		manageButton.setFont(new Font("微軟正黑體", Font.PLAIN, 20));
