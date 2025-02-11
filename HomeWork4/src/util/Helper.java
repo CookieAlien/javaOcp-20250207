@@ -44,10 +44,10 @@ public class Helper {
 			s.append("Nintendo Switch: ").append(String.format("%5s", order.getNswitch())).append("台\n");
 		}
     	if (order.getSteamdeck()>0) {
-			s.append("Steam Deck: ").append(String.format("%5s", order.getPs5pro())).append("台\n");
+			s.append("Steam Deck: ").append(String.format("%5s", order.getSteamdeck())).append("台\n");
 		}
     	if (order.getXboxcontroller()>0) {
-			s.append("XBOX無線手把: ").append(String.format("%5s", order.getPs5pro())).append("支\n");
+			s.append("XBOX無線手把: ").append(String.format("%5s", order.getXboxcontroller())).append("支\n");
 		}
     	s.append("=======================\n")
     	.append("小計:").append(String.format("%8s", order.getSum())).append("元\n");

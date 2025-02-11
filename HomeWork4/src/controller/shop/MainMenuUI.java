@@ -2,7 +2,6 @@ package controller.shop;
 
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.nio.file.spi.FileTypeDetector;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -151,7 +150,6 @@ public class MainMenuUI extends JFrame {
 		updateInfoButton.setBackground(Color.WHITE);
 		updateInfoButton.setBounds(28, 283, 132, 39);
 		contentPane.add(updateInfoButton);
-		
 		
 		new Timer(1000, e -> clockPanel.updateTime()).start();
 	}

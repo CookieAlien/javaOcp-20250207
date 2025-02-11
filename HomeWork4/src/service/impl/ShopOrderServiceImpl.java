@@ -28,7 +28,13 @@ public class ShopOrderServiceImpl implements ShopOrderService{
 
 	@Override
 	public ShopOrder getOrderById(int id) {
-		return shopOrderDaoImpl.selectById(id).get(0);
+		ShopOrder order = null;
+		try {
+			order = shopOrderDaoImpl.selectById(id).get(0);
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("no results");
+		}
+		return order;
 	}
 	@Override
 	public void updateOrder(ShopOrder order) {
