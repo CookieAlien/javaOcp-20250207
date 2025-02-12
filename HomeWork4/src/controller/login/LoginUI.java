@@ -109,6 +109,7 @@ public class LoginUI extends JFrame {
 		mainPanel.add(usernameLabel);
 		
 		usernameField = new JTextField();
+		usernameField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
 		usernameField.setBounds(158, 61, 141, 29);
 		mainPanel.add(usernameField);
 		usernameField.setColumns(10);
@@ -120,6 +121,7 @@ public class LoginUI extends JFrame {
 		mainPanel.add(passwordLabel);
 		
 		passwordField = new JPasswordField();
+		passwordField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
 		passwordField.setBounds(158, 122, 141, 28);
 		mainPanel.add(passwordField);
 		
