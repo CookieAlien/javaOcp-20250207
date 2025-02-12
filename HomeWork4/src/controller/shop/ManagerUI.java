@@ -89,6 +89,7 @@ public class ManagerUI extends JFrame {
 	 * Create the frame.
 	 */
 	public ManagerUI() {
+		setTitle("普龍共電視遊樂器專賣店");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 20, 1200, 800);
 		contentPane = new JPanel();

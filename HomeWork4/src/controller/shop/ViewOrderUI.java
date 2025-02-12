@@ -52,6 +52,7 @@ public class ViewOrderUI extends JFrame {
 	 * Create the frame.
 	 */
 	public ViewOrderUI() {
+		setTitle("普龍共電視遊樂器專賣店");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 450);
 		contentPane = new JPanel();

@@ -404,6 +404,19 @@ public class RegisterUI extends JFrame {
 		signupButton.setBounds(248, 300, 113, 37);
 		mainPanel.add(signupButton);
 		
+		JButton returnButton = new JButton("返回");
+		returnButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new LoginUI().setVisible(true);
+				dispose();
+			}
+		});
+		returnButton.setForeground(Color.WHITE);
+		returnButton.setFont(new Font("微軟正黑體", Font.PLAIN, 18));
+		returnButton.setBackground(new Color(255, 0, 0));
+		returnButton.setBounds(78, 300, 113, 37);
+		mainPanel.add(returnButton);
+		
 		new Timer(1000, e -> clockPanel.updateTime()).start();
 	}
 	private boolean validateAll(String username, String password,String passwordCheck, String name, String address, String email, String phone) {
