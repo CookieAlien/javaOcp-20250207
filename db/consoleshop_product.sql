@@ -18,33 +18,28 @@ USE `consoleshop`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `shopmember`
+-- Table structure for table `product`
 --
 
-DROP TABLE IF EXISTS `shopmember`;
+DROP TABLE IF EXISTS `product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `shopmember` (
+CREATE TABLE `product` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `phone` varchar(45) DEFAULT NULL,
-  `role` varchar(45) DEFAULT NULL,
+  `productname` varchar(45) DEFAULT NULL,
+  `price` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shopmember`
+-- Dumping data for table `product`
 --
 
-LOCK TABLES `shopmember` WRITE;
-/*!40000 ALTER TABLE `shopmember` DISABLE KEYS */;
-INSERT INTO `shopmember` VALUES (1,'admin','admin','cookie','sanchong','cookie@example.com','0987654321','staff'),(2,'chessbattle','Abc321','cba','E4','cba@cba.com','0900001111','customer'),(3,'babaisyou','Baba15','Baba','home','ba.ba@is.you','0921212121','customer'),(4,'teacher','Gjun305','teacher','公園路','gjun@gjun.com','0928282828','customer');
-/*!40000 ALTER TABLE `shopmember` ENABLE KEYS */;
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,'ps5pro',24280),(2,'ps5slim',17580),(3,'nswitch',9980),(4,'steamdeck',21280),(5,'xboxcontroller',1690);
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

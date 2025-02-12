@@ -18,33 +18,33 @@ USE `consoleshop`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `shopmember`
+-- Table structure for table `shoporder`
 --
 
-DROP TABLE IF EXISTS `shopmember`;
+DROP TABLE IF EXISTS `shoporder`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `shopmember` (
+CREATE TABLE `shoporder` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `phone` varchar(45) DEFAULT NULL,
-  `role` varchar(45) DEFAULT NULL,
+  `ps5pro` int DEFAULT NULL,
+  `ps5slim` int DEFAULT NULL,
+  `nswitch` int DEFAULT NULL,
+  `steamdeck` int DEFAULT NULL,
+  `xboxcontroller` int DEFAULT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shopmember`
+-- Dumping data for table `shoporder`
 --
 
-LOCK TABLES `shopmember` WRITE;
-/*!40000 ALTER TABLE `shopmember` DISABLE KEYS */;
-INSERT INTO `shopmember` VALUES (1,'admin','admin','cookie','sanchong','cookie@example.com','0987654321','staff'),(2,'chessbattle','Abc321','cba','E4','cba@cba.com','0900001111','customer'),(3,'babaisyou','Baba15','Baba','home','ba.ba@is.you','0921212121','customer'),(4,'teacher','Gjun305','teacher','公園路','gjun@gjun.com','0928282828','customer');
-/*!40000 ALTER TABLE `shopmember` ENABLE KEYS */;
+LOCK TABLES `shoporder` WRITE;
+/*!40000 ALTER TABLE `shoporder` DISABLE KEYS */;
+INSERT INTO `shoporder` VALUES (1,'chessbattle',2,0,1,0,0,'2025-02-11 03:57:11'),(3,'babaisyou',1,0,0,1,1,'2025-02-11 07:56:03'),(4,'chessbattle',0,3,0,2,2,'2025-02-12 03:30:30'),(5,'chessbattle',0,0,0,5,1,'2025-02-12 06:24:18'),(6,'admin',1,1,1,1,1,'2025-02-12 07:03:39'),(8,'admin',0,0,0,0,1,'2025-02-12 07:35:23'),(9,'admin',1,0,2,0,0,'2025-02-12 07:42:12'),(10,'teacher',1,0,1,3,0,'2025-02-12 07:45:24'),(11,'admin',0,1,1,1,0,'2025-02-12 07:51:01'),(12,'admin',0,0,0,0,1,'2025-02-12 07:51:22');
+/*!40000 ALTER TABLE `shoporder` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
