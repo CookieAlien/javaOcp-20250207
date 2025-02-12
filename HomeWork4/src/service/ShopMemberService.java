@@ -9,6 +9,7 @@ public interface ShopMemberService {
 	void addMember(ShopMember member);
 	//read
 	ShopMember login(String username, String password);
+	ShopMember findMember(String username);
 	boolean isUsernameTaken(String username);
 	List<ShopMember> getAllMembers();
 	//update

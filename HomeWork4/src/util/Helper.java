@@ -19,7 +19,11 @@ public class Helper {
     public static boolean validateName(String name) {
         return Pattern.matches("^[\u4e00-\u9fa5A-Za-z]{2,16}$", name);
     }
-
+    
+    // 驗證地址 (最多45個中英文數字與空白，但不可完全空白)
+    public static boolean validateAddress(String address) {
+        return Pattern.matches("^(?!\\s*$)[\u4e00-\u9fa5A-Za-z0-9,. ]{1,45}$", address);
+    }
     // 驗證電子郵件 (須為電郵格式)
     public static boolean validateEmail(String email) {
         return Pattern.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$", email);
@@ -79,5 +83,11 @@ public class Helper {
     	
     	return s.toString();
 	}
-    
+    public static String excelPaymentInfo(String name, ShopOrder order,String excel) {
+    	StringBuilder s = new StringBuilder();
+		s.append(getShoppingInfo(name, order));
+		s.append("讀取Excel成功:").append(excel).append("\n");
+		s.append("累積點數").append(order.getSum() / 300).append("點\n");
+		return s.toString();
+	}
 }

@@ -115,6 +115,12 @@ public class MainMenuUI extends JFrame {
 		contentPane.add(viewOrderButton);
 		
 		JButton manageButton = new JButton("管理後台");
+		manageButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ManagerUI().setVisible(true);
+				dispose();
+			}
+		});
 		manageButton.setEnabled(shopMember.getRole().equals("staff"));
 		manageButton.setBackground(new Color(255, 255, 255));
 		manageButton.setFont(new Font("微軟正黑體", Font.PLAIN, 20));

@@ -10,6 +10,7 @@ import controller.shop.MainMenuUI;
 import model.ShopMember;
 import service.impl.ShopMemberServiceImpl;
 import util.ClockPanel;
+import util.DBConnection;
 import util.FileTool;
 
 import java.awt.Color;
@@ -24,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.awt.event.ActionEvent;
 
 public class LoginUI extends JFrame {
@@ -154,6 +156,12 @@ public class LoginUI extends JFrame {
 		registerButton.setBackground(new Color(0, 225, 0));
 		registerButton.setBounds(327, 181, 103, 35);
 		mainPanel.add(registerButton);
+		
+
+		Connection connection = DBConnection.getConnection();
+		if (connection==null) {
+			JOptionPane.showMessageDialog(contentPane, "未連結至資料庫!", "錯誤", JOptionPane.ERROR_MESSAGE);
+		}
 		
 		new Timer(1000, e -> clockPanel.updateTime()).start();
 	}

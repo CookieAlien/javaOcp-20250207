@@ -251,7 +251,7 @@ public class ChangeInfoUI extends JFrame {
 		addressField = new JTextField();
 		addressField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (addressLabel.getText().isBlank()) {
+				if (Helper.validateAddress(addressLabel.getText())) {
 					addressField.setBorder(errorBorder);
 				}else {
 					addressField.setBorder(defaultBorder);
@@ -341,11 +341,11 @@ public class ChangeInfoUI extends JFrame {
 		phoneField.setText(member.getPhone());
 		mainPanel.add(phoneField);
 		
-		JLabel addressHintLabel = new JLabel("地址請勿空白");
+		JLabel addressHintLabel = new JLabel("地址最多45個字，請勿空白");
 		addressHintLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		addressHintLabel.setForeground(Color.BLACK);
 		addressHintLabel.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
-		addressHintLabel.setBounds(368, 153, 145, 29);
+		addressHintLabel.setBounds(368, 153, 162, 29);
 		mainPanel.add(addressHintLabel);
 		
 		JLabel emailHintLabel = new JLabel("須為電郵格式");
@@ -436,15 +436,15 @@ public class ChangeInfoUI extends JFrame {
 	}
 	private boolean validateAll(String password,String passwordCheck, String name, String address, String email, String phone) {
 		return Helper.validatePassword(password) 
-				&& password.equals(passwordCheck) 
+				&& password.equals(passwordCheck)
 				&& Helper.validateName(name)
-				&& !address.isBlank()
+				&& Helper.validateAddress(address)
 				&& Helper.validateEmail(email)
 				&& Helper.validatePhoneNumber(phone);
 	}
 	private boolean validateAll(String name, String address, String email, String phone) {
 		return Helper.validateName(name)
-				&& !address.isBlank()
+				&& Helper.validateAddress(address)
 				&& Helper.validateEmail(email)
 				&& Helper.validatePhoneNumber(phone);
 		}

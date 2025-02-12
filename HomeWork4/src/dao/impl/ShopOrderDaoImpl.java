@@ -49,6 +49,7 @@ public class ShopOrderDaoImpl implements ShopOrderDao{
 				order.setPs5slim(resultSet.getInt("ps5slim"));
 				order.setNswitch(resultSet.getInt("nswitch"));
 				order.setSteamdeck(resultSet.getInt("steamdeck"));
+				order.setXboxcontroller(resultSet.getInt("xboxcontroller"));
 				Timestamp timestamp = resultSet.getTimestamp("last_modified");
 				LocalDateTime dateTime = timestamp.toLocalDateTime();
 				order.setLastModified(dateTime);
@@ -78,6 +79,7 @@ public class ShopOrderDaoImpl implements ShopOrderDao{
 				order.setPs5slim(resultSet.getInt("ps5slim"));
 				order.setNswitch(resultSet.getInt("nswitch"));
 				order.setSteamdeck(resultSet.getInt("steamdeck"));
+				order.setXboxcontroller(resultSet.getInt("xboxcontroller"));
 				Timestamp timestamp = resultSet.getTimestamp("last_modified");
 				LocalDateTime dateTime = timestamp.toLocalDateTime();
 				order.setLastModified(dateTime);
@@ -107,6 +109,7 @@ public class ShopOrderDaoImpl implements ShopOrderDao{
 				order.setPs5slim(resultSet.getInt("ps5slim"));
 				order.setNswitch(resultSet.getInt("nswitch"));
 				order.setSteamdeck(resultSet.getInt("steamdeck"));
+				order.setXboxcontroller(resultSet.getInt("xboxcontroller"));
 				Timestamp timestamp = resultSet.getTimestamp("last_modified");
 				LocalDateTime dateTime = timestamp.toLocalDateTime();
 				order.setLastModified(dateTime);

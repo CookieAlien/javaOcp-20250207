@@ -38,8 +38,9 @@ public class ShopOrderServiceImpl implements ShopOrderService{
 	}
 	@Override
 	public void updateOrder(ShopOrder order) {
-		shopOrderDaoImpl.update(order);
-		
+		if (order.getPs5pro()>=0 && order.getPs5slim()>=0 && order.getNswitch()>=0 && order.getSteamdeck()>=0 && order.getXboxcontroller() >=0) {
+			shopOrderDaoImpl.update(order);
+		}
 	}
 	@Override
 	public void deleteOrder(int id) {

@@ -23,7 +23,15 @@ public class ShopMemberServiceImpl implements ShopMemberService{
 		}
 		return member;
 	}
-
+	@Override
+	public ShopMember findMember(String username) {
+		ShopMember member = null;
+		List<ShopMember> result = shopMemberDaoImpl.selectByUsername(username);
+		if (!result.isEmpty()) {
+			member = result.get(0);
+		}
+		return member;
+	}
 	@Override
 	public boolean isUsernameTaken(String username) {
 		// TODO Auto-generated method stub
@@ -40,5 +48,7 @@ public class ShopMemberServiceImpl implements ShopMemberService{
 		shopMemberDaoImpl.update(member);
 		
 	}
+
+	
 
 }

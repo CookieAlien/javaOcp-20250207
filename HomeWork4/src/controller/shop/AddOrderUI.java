@@ -161,9 +161,9 @@ public class AddOrderUI extends JFrame {
 		JButton subtractButton = new JButton("-");
 		subtractButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Integer n = Integer.parseInt(ps5proField.getText());
+				Integer n = (Integer) ps5proField.getValue();
 				if (n > 0) {
-					ps5proField.setText(String.valueOf(n-1));
+					ps5proField.setValue(n-1);
 					calcSum();
 				}
 				
@@ -179,9 +179,9 @@ public class AddOrderUI extends JFrame {
 		JButton addButton = new JButton("+");
 		addButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Integer n = Integer.parseInt(ps5proField.getText());
+				Integer n = (Integer) ps5proField.getValue();
 				if (n < 999) {
-					ps5proField.setText(String.valueOf(n+1));
+					ps5proField.setValue(n+1);;
 					calcSum();
 				}
 			}
@@ -203,9 +203,9 @@ public class AddOrderUI extends JFrame {
 		JButton subtractButton_1 = new JButton("-");
 		subtractButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Integer n = Integer.parseInt(ps5slimField.getText());
+				Integer n = (Integer) ps5slimField.getValue();
 				if (n > 0) {
-					ps5slimField.setText(String.valueOf(n-1));
+					ps5slimField.setValue(n-1);
 					calcSum();
 				}
 			}
@@ -232,9 +232,9 @@ public class AddOrderUI extends JFrame {
 		JButton addButton_1 = new JButton("+");
 		addButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Integer n = Integer.parseInt(ps5slimField.getText());
+				Integer n = (Integer) ps5slimField.getValue();
 				if (n < 999) {
-					ps5slimField.setText(String.valueOf(n+1));
+					ps5slimField.setValue(n+1);
 					calcSum();
 				}
 			}
@@ -264,9 +264,9 @@ public class AddOrderUI extends JFrame {
 		JButton subtractButton_2 = new JButton("-");
 		subtractButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Integer n = Integer.parseInt(nswitchField.getText());
+				Integer n = (Integer) nswitchField.getValue();
 				if (n > 0) {
-					nswitchField.setText(String.valueOf(n-1));
+					nswitchField.setValue(n-1);
 					calcSum();
 				}
 			}
@@ -293,9 +293,9 @@ public class AddOrderUI extends JFrame {
 		JButton addButton_2 = new JButton("+");
 		addButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Integer n = Integer.parseInt(nswitchField.getText());
+				Integer n = (Integer) nswitchField.getValue();
 				if (n < 999) {
-					nswitchField.setText(String.valueOf(n+1));
+					nswitchField.setValue(n+1);
 					calcSum();
 				}
 			}
@@ -325,9 +325,9 @@ public class AddOrderUI extends JFrame {
 		JButton subtractButton_3 = new JButton("-");
 		subtractButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Integer n = Integer.parseInt(steamdeckField.getText());
+				Integer n = (Integer) steamdeckField.getValue();
 				if (n > 0) {
-					steamdeckField.setText(String.valueOf(n-1));
+					steamdeckField.setValue(n-1);
 					calcSum();
 				}
 			}
@@ -354,9 +354,9 @@ public class AddOrderUI extends JFrame {
 		JButton addButton_3 = new JButton("+");
 		addButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Integer n = Integer.parseInt(steamdeckField.getText());
+				Integer n = (Integer) steamdeckField.getValue();
 				if (n < 999) {
-					steamdeckField.setText(String.valueOf(n+1));
+					steamdeckField.setValue(n+1);
 					calcSum();
 				}
 			}
@@ -386,9 +386,9 @@ public class AddOrderUI extends JFrame {
 		JButton subtractButton_4 = new JButton("-");
 		subtractButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Integer n = Integer.parseInt(xboxField.getText());
+				Integer n = (Integer) xboxField.getValue();
 				if (n > 0) {
-					xboxField.setText(String.valueOf(n-1));
+					xboxField.setValue(n-1);
 					calcSum();
 				}
 			}
@@ -415,9 +415,9 @@ public class AddOrderUI extends JFrame {
 		JButton addButton_4 = new JButton("+");
 		addButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Integer n = Integer.parseInt(xboxField.getText());
+				Integer n = (Integer) xboxField.getValue();
 				if (n < 999) {
-					xboxField.setText(String.valueOf(n+1));
+					xboxField.setValue(n+1);
 					calcSum();
 				}
 			}

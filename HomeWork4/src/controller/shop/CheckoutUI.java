@@ -25,9 +25,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JRadioButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
+import java.io.File;
 import java.text.NumberFormat;
 import java.awt.event.ActionEvent;
 
@@ -159,7 +161,6 @@ public class CheckoutUI extends JFrame {
 		confirmPanel.add(cardRadio);
 		
 		JRadioButton excelRadio = new JRadioButton("Excel Pay");
-		excelRadio.setEnabled(false);
 		excelRadio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cashField.setEnabled(false);
@@ -215,13 +216,23 @@ public class CheckoutUI extends JFrame {
 				} else if (cardRadio.isSelected()) {
 					String nameinput = JOptionPane.showInputDialog("刷卡請簽名(需與帳號的姓名相同)");
 					if (nameinput.equals(member.getName())) {
-						outputArea.setText(Helper.getShoppingInfo(nameinput, order)+"\n刷卡付款");
+						outputArea.setText(Helper.getShoppingInfo(member.getName(), order)+"\n刷卡付款");
 						finishPayment();
 					}else {
 						JOptionPane.showMessageDialog(contentPane, "簽名與會員姓名不同!", "警告", JOptionPane.WARNING_MESSAGE);
 					}
 				} else if (excelRadio.isSelected()) {
-					
+					JFileChooser fc = new JFileChooser();
+					int returnval = fc.showOpenDialog(contentPane);
+					if (returnval == JFileChooser.APPROVE_OPTION) {
+						File file = fc.getSelectedFile();
+						if (file.getName().endsWith(".xlsx") ||file.getName().endsWith(".xls")) {
+							outputArea.setText(Helper.excelPaymentInfo(member.getName(),order,file.getName()));
+							finishPayment();
+						}else {
+							JOptionPane.showMessageDialog(contentPane, "選擇的非excel檔案!");
+						}
+					}
 				} else {
 					JOptionPane.showMessageDialog(contentPane, "沒有選擇支付方式!", "警告", JOptionPane.WARNING_MESSAGE);
 				}

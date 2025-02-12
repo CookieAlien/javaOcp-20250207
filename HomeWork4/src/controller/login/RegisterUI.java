@@ -266,7 +266,7 @@ public class RegisterUI extends JFrame {
 		addressField = new JTextField();
 		addressField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (addressLabel.getText().isBlank()) {
+				if (Helper.validateAddress(addressLabel.getText())) {
 					addressField.setBorder(errorBorder);
 				}else {
 					addressField.setBorder(defaultBorder);
@@ -353,11 +353,11 @@ public class RegisterUI extends JFrame {
 		phoneField.setBounds(390, 245, 140, 29);
 		mainPanel.add(phoneField);
 		
-		JLabel addressHintLabel = new JLabel("地址請勿空白");
+		JLabel addressHintLabel = new JLabel("地址最多45個字，請勿空白");
 		addressHintLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		addressHintLabel.setForeground(Color.BLACK);
 		addressHintLabel.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
-		addressHintLabel.setBounds(368, 153, 145, 29);
+		addressHintLabel.setBounds(368, 153, 162, 29);
 		mainPanel.add(addressHintLabel);
 		
 		JLabel emailHintLabel = new JLabel("須為電郵格式");
@@ -411,7 +411,7 @@ public class RegisterUI extends JFrame {
 				&& Helper.validatePassword(password) 
 				&& password.equals(passwordCheck) 
 				&& Helper.validateName(name)
-				&& !address.isBlank()
+				&& Helper.validateAddress(address)
 				&& Helper.validateEmail(email)
 				&& Helper.validatePhoneNumber(phone);
 	}
