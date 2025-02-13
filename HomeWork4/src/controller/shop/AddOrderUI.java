@@ -218,8 +218,9 @@ public class AddOrderUI extends JFrame {
 		contentPane.add(subtractButton_1);
 		
 		ps5slimField = new JFormattedTextField(numberFormatter);
-		ps5slimField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		ps5slimField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
 				calcSum();
 			}
 		});
@@ -279,8 +280,9 @@ public class AddOrderUI extends JFrame {
 		contentPane.add(subtractButton_2);
 		
 		nswitchField = new JFormattedTextField(numberFormatter);
-		nswitchField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		nswitchField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
 				calcSum();
 			}
 		});
@@ -340,8 +342,9 @@ public class AddOrderUI extends JFrame {
 		contentPane.add(subtractButton_3);
 		
 		steamdeckField = new JFormattedTextField(numberFormatter);
-		steamdeckField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		steamdeckField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
 				calcSum();
 			}
 		});
@@ -401,8 +404,9 @@ public class AddOrderUI extends JFrame {
 		contentPane.add(subtractButton_4);
 		
 		xboxField = new JFormattedTextField(numberFormatter);
-		xboxField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		xboxField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
 				calcSum();
 			}
 		});

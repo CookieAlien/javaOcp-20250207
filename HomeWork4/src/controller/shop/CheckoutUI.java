@@ -121,7 +121,7 @@ public class CheckoutUI extends JFrame {
 		priceLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		priceLabel.setForeground(Color.BLACK);
 		priceLabel.setFont(new Font("微軟正黑體", Font.BOLD, 24));
-		priceLabel.setBounds(29, 53, 188, 46);
+		priceLabel.setBounds(10, 53, 239, 46);
 		priceLabel.setText("總額：$"+order.getSum());
 		confirmPanel.add(priceLabel);
 		

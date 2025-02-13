@@ -35,6 +35,7 @@ public class LoginUI extends JFrame {
 	private JTextField usernameField;
 	private JPasswordField passwordField;
 	private static ShopMemberServiceImpl shopMemberServiceImpl = new ShopMemberServiceImpl();
+	private JButton loginButton;
 
 	/**
 	 * Launch the application.
@@ -109,6 +110,11 @@ public class LoginUI extends JFrame {
 		mainPanel.add(usernameLabel);
 		
 		usernameField = new JTextField();
+		usernameField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				passwordField.requestFocusInWindow();
+			}
+		});
 		usernameField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
 		usernameField.setBounds(158, 61, 141, 29);
 		mainPanel.add(usernameField);
@@ -121,11 +127,16 @@ public class LoginUI extends JFrame {
 		mainPanel.add(passwordLabel);
 		
 		passwordField = new JPasswordField();
+		passwordField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				loginButton.requestFocusInWindow();
+			}
+		});
 		passwordField.setFont(new Font("微軟正黑體", Font.PLAIN, 12));
 		passwordField.setBounds(158, 122, 141, 28);
 		mainPanel.add(passwordField);
 		
-		JButton loginButton = new JButton("登入");
+		loginButton = new JButton("登入");
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = usernameField.getText();
